@@ -1,0 +1,32 @@
+{
+  "statusCode": 200,
+  "body": {
+    "bucket": "forecourt-datalake-dev-us-west-2-233499220272-stage",
+    "keysToProcess": [
+      "pre-stage/engineering/legislators/memberships_parsed.json",
+      "pre-stage/engineering/legislators/organizations_parsed.json",
+      "pre-stage/engineering/legislators/persons_parsed.json"
+    ],
+    "team": "engineering",
+    "pipeline": "main",
+    "pipeline_stage": "StageB",
+    "dataset": "legislators",
+    "org": "forecourt",
+    "app": "datalake",
+    "env": "dev",
+    "job": {
+      "processedKeysPath": "post-stage/engineering/legislators",
+      "jobDetails": {
+        "jobName": "sdlf-engineering-legislators-glue-job",
+        "jobRunId": "jr_6f6697eb46bb8c6529a46da0a1bd8302901590d60c9b92f3e9bc06228dddd593",
+        "jobStatus": "SUCCEEDED",
+        "tables": [
+          "memberships",
+          "organizations",
+          "persons"
+        ]
+      },
+      "peh_id": "0642f715-cab5-4e9e-98e5-0437cdef2f43"
+    }
+  }
+}

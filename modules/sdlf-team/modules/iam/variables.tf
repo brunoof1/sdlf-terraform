@@ -1,0 +1,12 @@
+variable "analytics_bucket" {}
+variable "application_name" {}
+variable "central_bucket" {}
+variable "data_quality_state_machine" {}
+variable "environment" {}
+variable "kms_infra_key_arn" {}
+variable "kms_data_key_arn" {}
+variable "organization_name" {}
+variable "pipeline_bucket" {}
+variable "shared_devops_account_id" {}
+variable "stage_bucket" {}
+variable "team_name" {}

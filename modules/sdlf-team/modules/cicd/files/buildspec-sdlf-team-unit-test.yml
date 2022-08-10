@@ -1,0 +1,29 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+        python: 3.7
+  build:
+    commands:
+      - DIR=$CODEBUILD_SRC_DIR/python/datalake_library
+      - min_coverage=$COV_PERCENT
+      - pip install -r $DIR/requirements.txt
+      - |-
+          for filename in $(find "$DIR" -name 'test*.py');
+            do
+                [ -e "$filename" ] || continue;
+                pname=$(dirname "$filename");
+                fbname=$(basename "$filename");
+                if [ -f $pname/requirements.txt ]; then
+                    echo "Installing package specific dependencies...";
+                    pip install -r $pname/requirements.txt;
+                fi
+                cov_output="$pname/coverage_report.txt";
+                code=$(echo $fbname | cut -d _ -f 2-);
+                package=$(find $DIR -name $code | xargs dirname);
+                python3 -m pytest "$filename" --cov-report term --cov=$package --cov-fail-under $min_coverage -x
+            done
+artifacts:
+  files:
+    - '*'
+    - '**/*'
